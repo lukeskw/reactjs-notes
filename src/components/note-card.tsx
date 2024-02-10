@@ -19,7 +19,7 @@ export function NoteCard({ note }: NoteCardProps) {
           {note.content}
         </p>
 
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/2 rounded-md bg-gradient-to-t from-black/60 to-black/0" />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/2 rounded-md bg-gradient-to-t from-black/50 to-black/0" />
       </DialogTrigger>
 
       <DialogContent className="flex h-[60vh] w-full max-w-sm flex-col overflow-hidden rounded-md p-0 outline-none md:max-w-md xl:max-w-[640px] dark:bg-slate-700">
