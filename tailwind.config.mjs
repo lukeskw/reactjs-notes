@@ -11,6 +11,9 @@ export default {
       },
     },
     extend: {
+      zIndex: {
+        100: '100',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
