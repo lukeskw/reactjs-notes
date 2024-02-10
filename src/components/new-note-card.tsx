@@ -1,9 +1,12 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import { TrainFrontTunnelIcon } from 'lucide-react'
-import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { toast } from 'sonner'
 
-export function NewNoteCard() {
+type NewNoteCardProps = {
+  onNoteCreated: (content: string) => void
+}
+
+export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(true)
   const [content, setContent] = useState('')
 
@@ -23,6 +26,13 @@ export function NewNoteCard() {
 
   function handleSaveNote(event: FormEvent) {
     event.preventDefault()
+
+    onNoteCreated(content)
+
+    setContent('')
+
+    setIsOnboardingOpen(true)
+
     toast.success('Note created successfully', {
       duration: 5000,
       className:
@@ -69,6 +79,7 @@ export function NewNoteCard() {
                 autoFocus
                 className="flex-1 resize-none bg-transparent text-sm leading-6 text-slate-400 outline-none"
                 onChange={handleContentChanged}
+                value={content}
               />
             )}
           </div>
