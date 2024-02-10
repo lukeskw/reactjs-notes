@@ -1,9 +1,4 @@
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { formatDistanceToNow } from 'date-fns'
 
 type NoteCardProps = {

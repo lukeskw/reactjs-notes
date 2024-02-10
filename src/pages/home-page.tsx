@@ -1,8 +1,18 @@
+import { useState } from 'react'
 import mainLogo from '../assets/main-logo.svg'
 import { NewNoteCard } from '../components/new-note-card'
 import { NoteCard } from '../components/note-card'
 
 export function HomePage() {
+  const [notes, setNotes] = useState([
+    {
+      id: crypto.randomUUID(),
+      date: new Date(),
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro id nulla illo, minus nemo mollitia?',
+    },
+  ])
+
   return (
     <div className="flex w-screen flex-col space-y-6 px-8 py-8 xl:mx-auto xl:my-12 xl:max-w-7xl">
       <img src={mainLogo} alt="Talki Notes" width={80} />
@@ -20,7 +30,13 @@ export function HomePage() {
 
       <div className="auto-rows-fixed grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
         <NewNoteCard />
-        <NoteCard
+      </div>
+    </div>
+  )
+}
+
+{
+  /* <NoteCard
           note={{
             date: new Date('2024-02-08T12:00:00'),
             content:
@@ -40,8 +56,5 @@ export function HomePage() {
             content:
               'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error dolor dignissimos illum voluptas quia voluptatibus explicabo quo, est accusamus! Porro ducimus animi vel esse explicabo quisquam odio molestias natus.',
           }}
-        />
-      </div>
-    </div>
-  )
+        /> */
 }
