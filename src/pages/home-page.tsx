@@ -21,16 +21,25 @@ export function HomePage() {
       <div className="auto-rows-fixed grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
         <NewNoteCard />
         <NoteCard
-          date={new Date('2024-02-08T12:00:00')}
-          content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error dolor dignissimos illum voluptas quia voluptatibus explicabo quo, est accusamus! Porro ducimus animi vel esse explicabo quisquam odio molestias natus."
+          note={{
+            date: new Date('2024-02-08T12:00:00'),
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error dolor dignissimos illum voluptas quia voluptatibus explicabo quo, est accusamus! Porro ducimus animi vel esse explicabo quisquam odio molestias natus.',
+          }}
         />
         <NoteCard
-          date={new Date('2024-02-06T12:00:00')}
-          content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error dolor dignissimos illum voluptas quia voluptatibus explicabo quo, est accusamus! Porro ducimus animi vel esse explicabo quisquam odio molestias natus."
+          note={{
+            date: new Date('2024-02-06T12:00:00'),
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error dolor dignissimos illum voluptas quia voluptatibus explicabo quo, est accusamus! Porro ducimus animi vel esse explicabo quisquam odio molestias natus.',
+          }}
         />
         <NoteCard
-          date={new Date('2024-02-04T12:00:00')}
-          content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error dolor dignissimos illum voluptas quia voluptatibus explicabo quo, est accusamus! Porro ducimus animi vel esse explicabo quisquam odio molestias natus."
+          note={{
+            date: new Date('2024-02-04T12:00:00'),
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et error dolor dignissimos illum voluptas quia voluptatibus explicabo quo, est accusamus! Porro ducimus animi vel esse explicabo quisquam odio molestias natus.',
+          }}
         />
       </div>
     </div>
