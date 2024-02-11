@@ -1,16 +1,13 @@
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger,
-} from '@/components/ui/dialog'
-import { Circle, X } from 'lucide-react'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Circle } from 'lucide-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { toast } from 'sonner'
 
 type NewNoteCardProps = {
   onNoteCreated: (content: string) => void
 }
+
+let speechRecognition: SpeechRecognition | null = null
 
 export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(true)
@@ -67,15 +64,44 @@ export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
 
     const SpeechRecognitionAPI =
       window.SpeechRecognition || window.webkitSpeechRecognition
+
+    speechRecognition = new SpeechRecognitionAPI()
+
+    speechRecognition.lang = 'en-US'
+
+    speechRecognition.continuous = true
+
+    speechRecognition.maxAlternatives = 1
+
+    speechRecognition.interimResults = true
+
+    speechRecognition.onresult = (event: SpeechRecognitionEvent) => {
+      const transcription = Array.from(event.results).reduce((text, result) => {
+        return text.concat(result[0].transcript)
+      }, '')
+
+      setContent(transcription)
+    }
+
+    speechRecognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+      console.error(event)
+    }
+
+    speechRecognition.start()
   }
 
   function handleStopRecording() {
-    setIsOnboardingOpen(true)
+    if (speechRecognition !== null) {
+      speechRecognition.stop()
+    }
 
     setIsRecording(false)
   }
 
   function handleOnModalClose() {
+    if (speechRecognition !== null) {
+      speechRecognition.stop()
+    }
     setTimeout(() => {
       setIsRecording(false)
       setContent('')
