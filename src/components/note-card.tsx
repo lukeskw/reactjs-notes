@@ -3,12 +3,14 @@ import { formatDistanceToNow } from 'date-fns'
 
 type NoteCardProps = {
   note: {
+    id: string
     date: Date
     content: string
   }
+  onNoteDeleted: (id: string) => void
 }
 
-export function NoteCard({ note }: NoteCardProps) {
+export function NoteCard({ note, onNoteDeleted }: NoteCardProps) {
   return (
     <Dialog>
       <DialogTrigger className="relative max-h-[250px] flex-1 space-y-6 rounded-md bg-slate-800 p-5 text-left outline-none hover:ring-2 hover:ring-slate-600 focus-visible:ring-2 focus-visible:ring-lime-400">
@@ -34,6 +36,9 @@ export function NoteCard({ note }: NoteCardProps) {
 
         <button
           type="button"
+          onClick={() => {
+            onNoteDeleted(note.id)
+          }}
           className="group h-10 w-full bg-slate-800 text-center text-sm font-medium text-slate-300 outline-none"
         >
           Do you wish to{' '}
