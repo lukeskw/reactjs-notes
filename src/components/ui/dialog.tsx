@@ -14,7 +14,7 @@ const DialogClose = DialogPrimitive.Close
 
 interface DialogContentProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
-  onClose: () => void
+  onClose?: () => void
 }
 
 const DialogOverlay = React.forwardRef<
